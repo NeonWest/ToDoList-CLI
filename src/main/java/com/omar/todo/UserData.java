@@ -7,6 +7,4 @@ public class UserData {
      public String name;
      public List<Todoformat> todos = new ArrayList<>();
 
-
-
 }
