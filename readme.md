@@ -1,14 +1,18 @@
 # ✅ Todo CLI Application
 
-A simple, elegant command-line todo list manager built with Java and Maven. Keep track of your tasks directly from your terminal!
+A powerful, elegant command-line todo list manager built with Java and Maven. Keep track of your tasks, mark them complete, and manage your productivity directly from your terminal!
 
 ## 🚀 Features
 
-- **📝 Add Tasks** - Quickly add new todos with a simple command
-- **📋 View Tasks** - Display all your pending tasks at a glance
-- **💾 Persistent Storage** - All tasks are saved in JSON format
+- **📝 Add Tasks** - Quickly create new todos with a simple command
+- **📋 View Active Tasks** - Display all your pending tasks at a glance
+- **✓ Mark as Complete** - Archive completed tasks without deleting them
+- **🗑️ Delete Tasks** - Permanently remove tasks you no longer need
+- **📊 View Completed Tasks** - Review your accomplishments in a separate list
+- **💾 Persistent Storage** - All tasks are automatically saved in JSON format
 - **👤 User Profiles** - Personalized experience with user registration
-- **🎯 Simple Interface** - Clean, intuitive menu-driven interface
+- **🔄 Smart Renumbering** - Tasks are automatically renumbered after modifications
+- **🎯 Intuitive Interface** - Clean, menu-driven interface for easy navigation
 
 ## 🛠️ Tech Stack
 
@@ -42,28 +46,47 @@ A simple, elegant command-line todo list manager built with Java and Maven. Keep
 
 ## 🎮 Usage
 
-When you launch the application, you'll see a simple menu:
+When you launch the application, you'll see an interactive menu:
 
 ```
 ---To Do Cli Application---
 Options:
 1: Add a new task
 2: Show your tasks
-3: Quit
+3: Delete a task
+4: Mark task as complete
+5: View completed tasks
+6: Quit
 ```
 
 ### Adding a Task
 1. Select option `1`
 2. Enter your task description
-3. Press Enter to save
+3. Task is automatically numbered and saved
 
-### Viewing Tasks
+### Viewing Active Tasks
 1. Select option `2`
-2. All your tasks will be displayed with their numbers
-3. Press Enter to return to the menu
+2. All incomplete tasks are displayed with their numbers
+3. Completed tasks are hidden from this view
+
+### Deleting a Task
+1. Select option `3`
+2. Enter the task number you want to delete
+3. Task is permanently removed and remaining tasks are renumbered
+
+### Marking Tasks as Complete
+1. Select option `4`
+2. Enter the task number to mark as done
+3. Task is archived but not deleted
+4. Task becomes unnumbered and moves to completed list
+
+### Viewing Completed Tasks
+1. Select option `5`
+2. All completed tasks are displayed with checkmarks
+3. These tasks don't show numbers (archived state)
 
 ### Exiting
-Select option `3` to quit the application
+Select option `6` to quit the application
 
 ## 📁 Project Structure
 
@@ -75,11 +98,11 @@ todo-cli/
 │           └── com/
 │               └── omar/
 │                   └── todo/
-│                       ├── TodoMain.java      # Main application entry
-│                       ├── UserData.java      # User data model
-│                       ├── Todoformat.java    # Todo item model
-│                       ├── JsonEditor.java    # JSON operations
-│                       └── todolist.json      # Data storage
+│                       ├── TodoMain.java       # Main application entry
+│                       ├── UserData.java       # User data model
+│                       ├── Todoformat.java     # Todo item model
+│                       ├── JsonEditor.java     # JSON operations & utilities
+│                       └── todolist.json       # Data storage (auto-generated)
 ├── pom.xml
 └── README.md
 ```
@@ -94,14 +117,20 @@ todo-cli/
 </dependency>
 ```
 
-## 💡 Example
+## 💡 Example Session
 
 ```
 ---To Do Cli Application---
+Please enter your name for registration
+> Omar
+
 Options:
 1: Add a new task
 2: Show your tasks
-3: Quit
+3: Delete a task
+4: Mark task as complete
+5: View completed tasks
+6: Quit
 > 1
 
 Please enter the task:
@@ -113,18 +142,45 @@ Your Tasks:
 1. Buy groceries
 2. Finish project
 3. Call dentist
+
+> 4
+Which task is completed? (ID):
+> 2
+Task marked as complete!
+
+> 5
+Completed Tasks:
+✓ Finish project
 ```
+
+## 🎯 Key Features Explained
+
+### Smart Task Management
+- **Active tasks** are numbered sequentially (1, 2, 3...)
+- **Completed tasks** become unnumbered (archived state)
+- **Automatic renumbering** keeps your list clean after deletions
+
+### Data Persistence
+- All tasks are saved to `todolist.json` automatically
+- Your data persists between sessions
+- First-time users are prompted to register their name
+
+### Input Validation
+- Invalid inputs are caught and user is prompted to retry
+- Task IDs are verified before operations
+- Helpful error messages guide the user
 
 ## 🔮 Future Enhancements
 
-- [ ] Mark tasks as complete
-- [ ] Delete tasks
 - [ ] Edit existing tasks
-- [ ] Task priorities
-- [ ] Due dates
-- [ ] Categories/tags
+- [ ] Task priorities (high, medium, low)
+- [ ] Due dates and reminders
+- [ ] Categories/tags for organization
 - [ ] Search functionality
-- [ ] Export to different formats
+- [ ] Sort and filter options
+- [ ] Export to different formats (CSV, PDF)
+- [ ] Undo/redo functionality
+- [ ] Recurring tasks
 
 ## 🤝 Contributing
 
