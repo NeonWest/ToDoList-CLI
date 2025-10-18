@@ -11,7 +11,7 @@ public class JsonEditor {
     Gson gson = new Gson();
     Scanner scanner = new Scanner(System.in);
     public void TaskAdd(UserData user){
-        try (FileWriter writer = new FileWriter("todolist.json")){
+        try (FileWriter writer = new FileWriter("data/todolist.json")){
             gson.toJson(user, writer);
         } catch (IOException e){
             e.printStackTrace();
@@ -20,7 +20,7 @@ public class JsonEditor {
 
     public int taskcounter(){
         int nextID = 1;
-        try (FileReader reader = new FileReader("todolist.json")){
+        try (FileReader reader = new FileReader("data/todolist.json")){
             UserData data = new Gson().fromJson(reader, UserData.class);
             nextID = data.todos.size() + 1;
 
@@ -32,7 +32,7 @@ public class JsonEditor {
 
     public UserData newuser(){
         UserData user;
-        try (FileReader reader = new FileReader("todolist.json")){
+        try (FileReader reader = new FileReader("data/todolist.json")){
             user = new Gson().fromJson(reader, UserData.class);
         }catch (IOException e){
             System.out.println("Please enter your name for registration");

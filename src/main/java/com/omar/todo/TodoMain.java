@@ -1,10 +1,7 @@
 package com.omar.todo;
-import java.io.FileReader;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
